@@ -5,4 +5,4 @@ var env = process.env.NODE_ENV || 'development';
 var config = require("../knexfile")[env];
 
 //export the whole file
-modules.exports = require("knex")(config);
+module.exports = require("knex")(config);

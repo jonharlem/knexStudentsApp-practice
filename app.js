@@ -7,7 +7,7 @@ var knex = require("./db/knex");
 //setting a poperty on the app
 app.set("view engine", "ejs");
 //middleware
-app.use(bodyParser.urlcoded({extender:true}));
+app.use(bodyParser.urlencoded({extender:true}));
 //tiny is the amount of information displayed when logging
 app.use(morgan('tiny'));
 
