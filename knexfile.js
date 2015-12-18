@@ -3,10 +3,14 @@
 module.exports = {
 
   development: {
-    client: 'sqlite3',
+    //database to postgress
+    client: 'postgresql',
     connection: {
-      filename: './dev.sqlite3'
-    }
+    // change filename to database and 
+      database: 'studentsapp'
+    },
+    // add debug:true
+    debug: true
   },
 
   staging: {
