@@ -3,6 +3,7 @@ var app = express();
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var knex = require("./db/knex");
+var methodOverride = require('method-override');
 
 //setting a poperty on the app
 app.set("view engine", "ejs");
@@ -10,6 +11,7 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended:true}));
 //tiny is the amount of information displayed when logging
 app.use(morgan('tiny'));
+app.use(methodOverride('_method'));
 
 //
 app.get('/students', function(req, res) {
@@ -30,6 +32,20 @@ app.post('/students', function(req, res) {
 		res.redirect('/students');
 	});
 });
+
+app.get('/students/:id/edit', function(req, res) {
+	var id = req.params.id;
+	//find a student
+	knex('students').where({id: id}).first().then(function(){
+	//render edit; show form
+		res.render("edit", {students:student});
+	});
+});
+
+app.put('students/:id', function(req, res) {
+
+});
+
 //start the server
 app.listen(3000, function() {
 	//log a message to make sure the server is running
