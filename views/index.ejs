@@ -4,5 +4,8 @@
 <% students.forEach(function(student){ %>
 	<p>
 		<%= student.name %>
+		<form action="/students/<%= student.id%>?_method=DELETE" method="POST">
+			<input type="sumbit" value="X">
+		</form>
 	</p>
 <% })%>
